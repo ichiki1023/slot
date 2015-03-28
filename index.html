@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自己紹介[名前:佐藤一輝]</title>
+</head>
+<body>
+
+<div id="result">ちさいうきと</div>
+
+<input type="button" value="入れ替え" onclick="changeAction()">
+
+<script type="text/javascript">
+
+var nameBox = new Array("さ","と","う","い","ち","き");
+
+var randomBox  = new Array(0,1,2,3,4,5);
+
+function changeAction() {
+	var text = "";
+	shuffle(nameBox);
+	text = nameBox.join('');
+
+	document.getElementById("result").innerHTML = text;
+	if("text" == "さとういちき"){
+		alert("終了です。");
+	}
+}
+
+function shuffle(a) {
+  for (var i=a.length-1;i>=0;i--) {
+    var r=Math.floor(i*Math.random());
+    var tmp=a[i];
+    a[i]=a[r];
+    a[r]=tmp;
+  }
+  return a;
+}
+</script>
+
+</body>
+</html>

@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>自己紹介[名前:佐藤一輝]</title>
+  <title>スロット</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="Slot.js"></script>
 </head>
 <body>
-
-<div id="result">ちさいうきと</div>
-
-<input type="button" value="入れ替え" onclick="changeAction()">
+  <div id="main">
+    <div class="block" style="top:200px;"></div>
+    <div id= "slot1"></div>
+    <div id= "slot2"></div>
+    <div id= "slot3"></div>
+    <div class="block"></div>
+    <input id="start" type="button" value="スタート" onclick="startSlot()">
+    <input class="stop" type="button" value="ストップ" onclick="stopSlot(0)" style="left:100px;">
+    <input class="stop" type="button" value="ストップ" onclick="stopSlot(1)" style="left:250px;">
+    <input class="stop" type="button" value="ストップ" onclick="stopSlot(2)" style="left:400px;">
+  </div>
 
 <script type="text/javascript">
+var slot1 = new Slot(
+  ["f1.jpg", "f2.jpg", "f3.jpg"],//画像のURL
+  100,    //画像の幅
+  100,    //画像の高さ
+  100,    //スロットのx座標
+  0,      //スロットのy座標
+  "slot1" //id名
+  );
 
-var nameBox = new Array("さ","と","う","い","ち","き");
+var slot2 = new Slot(["f1.jpg", "f2.jpg", "f3.jpg"],100,100,250,0,"slot2");
+var slot3 = new Slot(["f1.jpg", "f2.jpg", "f3.jpg"],100,100,400,0,"slot3");
 
-var randomBox  = new Array(0,1,2,3,4,5);
+var slotArray = [slot1,slot2,slot3];
 
-function changeAction() {
-	var text = "";
-	shuffle(nameBox);
-	text = nameBox.join('');
-
-	document.getElementById("result").innerHTML = text;
-	if("text" == "さとういちき"){
-		alert("終了です。");
-	}
-}
-
-function shuffle(a) {
-  for (var i=a.length-1;i>=0;i--) {
-    var r=Math.floor(i*Math.random());
-    var tmp=a[i];
-    a[i]=a[r];
-    a[r]=tmp;
+function startSlot() {
+  for(var i in slotArray){
+    slotArray[i].start();
   }
-  return a;
 }
-</script>
 
+function stopSlot(n) {
+  slotArray[n].stop();
+}
+
+</script>
 </body>
 </html>

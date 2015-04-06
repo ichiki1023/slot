@@ -1,8 +1,10 @@
 # スロットマシンを作る
 
-簡単なスロットマシンを作りました。
-
-Slot.jsを導入して、scriptで以下のように記述すれば出来ます。
+簡単なスロットマシンをJSで作りました。
+  
+ http://satoichiki.github.io/slot/
+  
+Slot.jsを導入して、scriptで以下のように記述すればスロットマシンが出来ます。
 
 ```javascript
 var slot1 = new Slot(
